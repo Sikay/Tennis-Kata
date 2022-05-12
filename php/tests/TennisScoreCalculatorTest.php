@@ -15,13 +15,6 @@ class TennisScoreCalculatorTest extends TestCase
     }
 
     /** @test */
-    public function should_player_not_win_when_make_four_points_and_opponent_have_3_point()
-    {
-        $tennisScoreCalculator = new TennisScoreCalculator();
-        $this->assertTrue($tennisScoreCalculator->score(4, 3) === 'Player one advantage');
-    }
-
-    /** @test */
     public function should_player_one_win_when_make_two_more_point_than_opponent_in_advantage_stage()
     {
         $tennisScoreCalculator = new TennisScoreCalculator();
@@ -33,5 +26,12 @@ class TennisScoreCalculatorTest extends TestCase
     {
         $tennisScoreCalculator = new TennisScoreCalculator();
         $this->assertTrue($tennisScoreCalculator->score(4, 6) === 'Player two win match');
+    }
+
+    /** @test */
+    public function should_player_one_get_advantage_when_make_one_more_point_than_opponent_in_advantage_stage()
+    {
+        $tennisScoreCalculator = new TennisScoreCalculator();
+        $this->assertTrue($tennisScoreCalculator->score(4, 3) === 'Player one advantage');
     }
 }
