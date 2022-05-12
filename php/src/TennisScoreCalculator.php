@@ -16,7 +16,7 @@ class TennisScoreCalculator {
             $score = 'Player one advantage';
         }
 
-        if ($player1Points === 5 && $player2Points === 3) {
+        if ($player1Points >= 3 && $player2Points >= 3 && ($player1Points - $player2Points) >= 2) {
             $score = 'Player one win match';
         }
 
