@@ -33,6 +33,10 @@ class TennisScoreCalculator {
             return 'Player two win match';
         }
 
+        if (($player2Points - $player1Points) == 1) {
+            return 'Player two advantage';
+        }
+
         return '';
     }
 

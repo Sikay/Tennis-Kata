@@ -34,4 +34,11 @@ class TennisScoreCalculatorTest extends TestCase
         $tennisScoreCalculator = new TennisScoreCalculator();
         $this->assertTrue($tennisScoreCalculator->score(4, 3) === 'Player one advantage');
     }
+
+    /** @test */
+    public function should_player_two_get_advantage_when_make_one_more_point_than_opponent_in_advantage_stage()
+    {
+        $tennisScoreCalculator = new TennisScoreCalculator();
+        $this->assertTrue($tennisScoreCalculator->score(5, 6) === 'Player two advantage');
+    }
 }
