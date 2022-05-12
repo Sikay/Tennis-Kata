@@ -48,4 +48,11 @@ class TennisScoreCalculatorTest extends TestCase
         $tennisScoreCalculator = new TennisScoreCalculator(0, 1);
         $this->assertTrue($tennisScoreCalculator->score() === 'Player one: love | Player two: 15');
     }
+
+    /** @test */
+    public function should_view_score_when_points_are_30_to_40()
+    {
+        $tennisScoreCalculator = new TennisScoreCalculator(2, 3);
+        $this->assertTrue($tennisScoreCalculator->score() === 'Player one: 30 | Player two: 40');
+    }
 }

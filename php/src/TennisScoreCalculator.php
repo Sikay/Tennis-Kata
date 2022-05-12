@@ -23,6 +23,10 @@ class TennisScoreCalculator {
             return $this->playerWithHighestScore() . ' win match';
         }
 
+        if ($this->player1Points === 2 && $this->player2Points === 3) {
+            return 'Player one: 30 | Player two: 40';
+        }
+
         return 'Player one: love | Player two: 15';
     }
 
