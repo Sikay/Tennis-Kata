@@ -13,7 +13,7 @@ class TennisScoreCalculator {
         }
 
         if ($player1Points === 4 && $player2Points === 3) {
-            $score = 'Player one forty - Player second thirty';
+            $score = 'Player one advantage';
         }
 
         return $score;

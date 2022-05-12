@@ -18,6 +18,6 @@ class TennisScoreCalculatorTest extends TestCase
     public function should_player_not_win_when_make_four_points_and_opponent_have_3_point()
     {
         $tennisScoreCalculator = new TennisScoreCalculator();
-        $this->assertTrue($tennisScoreCalculator->score(4, 3) === 'Player one forty - Player second thirty');
+        $this->assertTrue($tennisScoreCalculator->score(4, 3) === 'Player one advantage');
     }
 }
