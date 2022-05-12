@@ -27,6 +27,10 @@ class TennisScoreCalculator {
             return 'Player one: 30 | Player two: 40';
         }
 
+        if ($this->player1Points === 1 && $this->player2Points === 2) {
+            return 'Player one: 15 | Player two: 30';
+        }
+
         return 'Player one: love | Player two: 15';
     }
 
