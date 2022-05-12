@@ -23,8 +23,8 @@ class TennisScoreCalculator {
             return $this->playerWithHighestScore() . ' win match';
         }
 
-        return 'Player one: ' . $this->translatePointIntoScore($this->player1Points) .
-                ' | Player two: ' . $this->translatePointIntoScore($this->player2Points);
+        return 'Player one: ' . $this->translatePointToScore($this->player1Points) .
+                ' | Player two: ' . $this->translatePointToScore($this->player2Points);
     }
 
     private function hasAdvantage(): bool
@@ -63,23 +63,24 @@ class TennisScoreCalculator {
         }
     }
 
-    private function translatePointIntoScore(int $points): string
+    private function translatePointToScore(int $points): string
     {
-        if ($points === 0) {
-            return 'love';
+        $pointToScore = [
+            0 => 'love',
+            1 => '15',
+            2 => '30',
+            3 => '40',
+        ];
+
+        $translate = '';
+
+        foreach ($pointToScore as $point => $score) {
+            if ($points === $point) {
+                $translate = $score;
+            }
         }
 
-        if ($points === 1) {
-            return '15';
-        }
-
-        if ($points === 2) {
-            return '30';
-        }
-
-        if ($points === 3) {
-            return '40';
-        }
+        return $translate;
     }
 
 }
