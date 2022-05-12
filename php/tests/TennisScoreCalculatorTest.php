@@ -69,4 +69,11 @@ class TennisScoreCalculatorTest extends TestCase
         $tennisScoreCalculator = new TennisScoreCalculator(3, 3);
         $this->assertTrue($tennisScoreCalculator->score() === 'Deuce');
     }
+
+    /** @test */
+    public function should_view_deuce_stage_when_points_are_40_to_40_after_rounds_of_tiebreaking()
+    {
+        $tennisScoreCalculator = new TennisScoreCalculator(5, 5);
+        $this->assertTrue($tennisScoreCalculator->score() === 'Deuce');
+    }
 }

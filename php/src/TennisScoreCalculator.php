@@ -23,7 +23,7 @@ class TennisScoreCalculator {
             return $this->playerWithHighestScore() . ' win match';
         }
 
-        if ($this->player1Points === 3 && $this->player2Points === 3) {
+        if ($this->hasDeuce()) {
             return 'Deuce';
         }
 
@@ -33,38 +33,27 @@ class TennisScoreCalculator {
 
     private function hasAdvantage(): bool
     {
-        if ($this->isAdvantageStage() && abs($this->player1Points - $this->player2Points) == 1) {
-            return true;
-        }
-
-        return false;
+        return $this->isAdvantageStage() && abs($this->player1Points - $this->player2Points) == 1;
     }
 
     private function isAdvantageStage(): bool
     {
-        if ($this->player1Points >= 3 && $this->player2Points >= 3) {
-            return true;
-        }
-        return false;
+        return $this->player1Points >= 3 && $this->player2Points >= 3;
     }
 
     private function hasWinner(): string
     {
+        return ($this->player1Points >= 4 || $this->player2Points >= 4) && abs($this->player1Points - $this->player2Points) >= 2;
+    }
 
-        if (($this->player1Points >= 4 || $this->player2Points >= 4) && abs($this->player1Points - $this->player2Points) >= 2) {
-            return true;
-        }
-
-        return false;
+    private function hasDeuce(): bool
+    {
+        return $this->player1Points >= 3 && $this->player2Points === $this->player1Points;
     }
 
     private function playerWithHighestScore(): string
     {
-        if ($this->player1Points > $this->player2Points) {
-            return 'Player one';
-        } else {
-            return 'Player two';
-        }
+        return $this->player1Points > $this->player2Points ? 'Player one' : 'Player two';
     }
 
     private function translatePointToScore(int $points): string
