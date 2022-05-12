@@ -4,6 +4,8 @@ default:
 # Local commands
 dependencies:
 	composer install
+dump-autoload:
+	composer dump-autoload
 .PHONY: tests
 tests:
 	./vendor/bin/phpunit
@@ -17,7 +19,8 @@ mutants:
 docker-build:
 	docker build -t php-docker-bootstrap .
 	@docker run --rm -v $(shell pwd):/opt/project php-docker-bootstrap make dependencies
-
+docker-dump-autoload:
+	@docker run --rm -v $(shell pwd):/opt/project php-docker-bootstrap make dump-autoload
 docker-tests:
 	@docker run --rm -v $(shell pwd):/opt/project php-docker-bootstrap make tests
 docker-coverage:

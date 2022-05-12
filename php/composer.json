@@ -9,8 +9,13 @@
     },
     "autoload": {
         "psr-4": {
-            "KataTemplate\\": "src",
-            "KataTemplate\\Test\\": "tests"
+            "TennisKata\\": "src",
+            "TennisKata\\Test\\": "tests"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "infection/extension-installer": true
         }
     }
 }
