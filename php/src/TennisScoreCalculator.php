@@ -15,44 +15,51 @@ class TennisScoreCalculator {
 
     public function score(): string
     {
-        $score = '';
+        if ($this->hasAdvantage()) {
+            return $this->playerWithHighestScore() . ' advantage';
+        }
 
+        if ($this->hasWinner()) {
+            return $this->playerWithHighestScore() . ' win match';
+        }
+
+        return '';
+    }
+
+    private function hasAdvantage(): bool
+    {
+        if ($this->isAdvantageStage() && abs($this->player1Points - $this->player2Points) == 1) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private function isAdvantageStage(): bool
+    {
         if ($this->player1Points >= 3 && $this->player2Points >= 3) {
-            $score = $this->advantageStage($this->player1Points, $this->player2Points);
+            return true;
         }
-
-        if (($this->player1Points >= 4 || $this->player2Points >= 4) && empty($score)) {
-            $score = $this->hasWinner($this->player1Points, $this->player2Points);
-        }
-
-        return $score;
+        return false;
     }
 
-    private function advantageStage(int $player1Points, int $player2Points): string
+    private function hasWinner(): string
     {
-        if (($player1Points - $player2Points) == 1) {
-            return 'Player one advantage';
+
+        if (($this->player1Points >= 4 || $this->player2Points >= 4) && abs($this->player1Points - $this->player2Points) >= 2) {
+            return true;
         }
 
-        if (($player2Points - $player1Points) == 1) {
-            return 'Player two advantage';
-        }
-
-        return '';
+        return false;
     }
 
-    private function hasWinner(int $player1Points, int $player2Points): string
+    private function playerWithHighestScore(): string
     {
-
-        if (($player1Points - $player2Points) >= 2) {
-            return 'Player one win match';
+        if ($this->player1Points > $this->player2Points) {
+            return 'Player one';
+        } else {
+            return 'Player two';
         }
-
-        if (($player2Points - $player1Points) >= 2) {
-            return 'Player two win match';
-        }
-
-        return '';
     }
 
 }
