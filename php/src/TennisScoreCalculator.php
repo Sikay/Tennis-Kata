@@ -20,6 +20,10 @@ class TennisScoreCalculator {
             $score = 'Player one win match';
         }
 
+        if ($player1Points >= 3 && $player2Points >= 3 && ($player2Points - $player1Points) >= 2) {
+            $score = 'Player two win match';
+        }
+
         return $score;
     }
 
