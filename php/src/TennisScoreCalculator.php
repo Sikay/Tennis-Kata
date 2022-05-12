@@ -4,16 +4,25 @@ namespace TennisKata;
 
 class TennisScoreCalculator {
 
-    public function score(int $player1Points, int $player2Points): string
+    private int $player1Points;
+    private int $player2Points;
+
+    public function __construct(int $player1Points, int $player2Points)
+    {
+        $this->player1Points = $player1Points;
+        $this->player2Points = $player2Points;
+    }
+
+    public function score(): string
     {
         $score = '';
 
-        if ($player1Points >= 3 && $player2Points >= 3) {
-            $score = $this->advantageStage($player1Points, $player2Points);
+        if ($this->player1Points >= 3 && $this->player2Points >= 3) {
+            $score = $this->advantageStage($this->player1Points, $this->player2Points);
         }
 
-        if (($player1Points >= 4 || $player2Points >= 4) && empty($score)) {
-            $score = $this->hasWinner($player1Points, $player2Points);
+        if (($this->player1Points >= 4 || $this->player2Points >= 4) && empty($score)) {
+            $score = $this->hasWinner($this->player1Points, $this->player2Points);
         }
 
         return $score;
