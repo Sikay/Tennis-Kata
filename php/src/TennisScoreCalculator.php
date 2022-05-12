@@ -23,15 +23,8 @@ class TennisScoreCalculator {
             return $this->playerWithHighestScore() . ' win match';
         }
 
-        if ($this->player1Points === 2 && $this->player2Points === 3) {
-            return 'Player one: 30 | Player two: 40';
-        }
-
-        if ($this->player1Points === 1 && $this->player2Points === 2) {
-            return 'Player one: 15 | Player two: 30';
-        }
-
-        return 'Player one: love | Player two: 15';
+        return 'Player one: ' . $this->translatePointIntoScore($this->player1Points) .
+                ' | Player two: ' . $this->translatePointIntoScore($this->player2Points);
     }
 
     private function hasAdvantage(): bool
@@ -67,6 +60,25 @@ class TennisScoreCalculator {
             return 'Player one';
         } else {
             return 'Player two';
+        }
+    }
+
+    private function translatePointIntoScore(int $points): string
+    {
+        if ($points === 0) {
+            return 'love';
+        }
+
+        if ($points === 1) {
+            return '15';
+        }
+
+        if ($points === 2) {
+            return '30';
+        }
+
+        if ($points === 3) {
+            return '40';
         }
     }
 
