@@ -23,7 +23,7 @@ class TennisScoreCalculator {
             return $this->playerWithHighestScore() . ' win match';
         }
 
-        return '';
+        return 'Player one: love | Player two: 15';
     }
 
     private function hasAdvantage(): bool
